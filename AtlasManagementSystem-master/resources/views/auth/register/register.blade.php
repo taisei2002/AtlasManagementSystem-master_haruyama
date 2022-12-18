@@ -24,6 +24,9 @@
                 <input type="text" style="width:140px;" class="border-0 over_name" name="over_name">
               </div>
             </div>
+@if ($errors->has('over_name'))
+<p class='error-string'>{{ $errors->first('over_name') }}</p>
+ @endif
             <div class="" style="width:140px">
               <label class=" d-block m-0" style="font-size:13px">名</label>
               <div class="border-bottom border-primary" style="width:140px;">
@@ -31,6 +34,9 @@
               </div>
             </div>
           </div>
+@if ($errors->has('under_name'))
+<p class='error-string'>{{ $errors->first('under_name') }}</p>
+ @endif
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:140px">
               <label class="d-block m-0" style="font-size:13px">セイ</label>
@@ -38,6 +44,9 @@
                 <input type="text" style="width:140px;" class="border-0 over_name_kana" name="over_name_kana">
               </div>
             </div>
+@if ($errors->has('over_name_kana'))
+<p class='error-string'>{{ $errors->first('over_name_kana') }}</p>
+ @endif
             <div class="" style="width:140px">
               <label class="d-block m-0" style="font-size:13px">メイ</label>
               <div class="border-bottom border-primary" style="width:140px;">
@@ -45,6 +54,9 @@
               </div>
             </div>
           </div>
+@if ($errors->has('under_name_kana'))
+<p class='error-string'>{{ $errors->first('under_name_kana') }}</p>
+ @endif
           <div class="mt-3">
             <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
             <div class="border-bottom border-primary">
@@ -52,6 +64,9 @@
             </div>
           </div>
         </div>
+@if ($errors->has('mail_address'))
+<p class='error-string'>{{ $errors->first('mail_address') }}</p>
+ @endif
         <div class="mt-3">
           <input type="radio" name="sex" class="sex" value="1">
           <label style="font-size:13px">男性</label>
@@ -164,18 +179,27 @@
           </div>
           @endforeach
         </div>
+                @if ($errors->has('role'))
+<p class='error-string'>{{ $errors->first('role') }}</p>
+ @endif
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">パスワード</label>
           <div class="border-bottom border-primary">
             <input type="password" class="border-0 w-100 password" name="password">
           </div>
         </div>
+                @if ($errors->has('password'))
+<p class='error-string'>{{ $errors->first('password') }}</p>
+ @endif
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">確認用パスワード</label>
           <div class="border-bottom border-primary">
             <input type="password" class="border-0 w-100 password_confirmation" name="password">
           </div>
         </div>
+                @if ($errors->has('password_confirmation'))
+<p class='error-string'>{{ $errors->first('password_confirmation') }}</p>
+ @endif
         <div class="mt-5 text-right">
           <input type="submit" class="btn btn-primary register_btn" disabled value="新規登録" onclick="return confirm('登録してよろしいですか？')">
         </div>
