@@ -37,4 +37,5 @@ class PostFormRequest extends FormRequest
             'post_body.max' => '最大文字数は500文字です。',
         ];
     }
+    
 }

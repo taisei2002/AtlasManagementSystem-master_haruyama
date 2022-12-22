@@ -14,17 +14,16 @@ class UsersTableSeeder extends Seeder
     {
          DB::table('users')->insert([
          [
-          'id' => '1',
           'over_name' => '春山',
           'under_name' => '泰星',
-          'over_name_kana' => 'ﾊﾙﾔﾏ',
-          'under_name_kana'=> 'ﾀｲｾｲ',
+          'over_name_kana' => 'ハルヤマ',
+          'under_name_kana'=> 'タイセイ',
           'mail_address' => 'taisei@Compass.com',
           'sex' => '1',
           'birth_day' => '20020209',
           'role' => '1',
           'password' => bcrypt('123456789'),
- 
+
             ],
 
 
