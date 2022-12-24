@@ -23,15 +23,19 @@ class UsersFormRequest extends FormRequest
      */
     public function rules()
     {
+        $day = date("2000-1-1");
+
         return [
 
         'over_name'=> 'required|string|max:10',
         'under_name'=> 'required|string|max:10',
-        'over_name_kana'=> 'required|string|max:30|',
-        'under_name_kana'=> 'required|string|max:30|',
+        'over_name_kana'=> 'required|string|max:30|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
+        'under_name_kana'=> 'required|string|max:30|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
         'mail_address'=> 'required|string|email|max:100|unique:users',
         'sex'=> 'required|',
-        'birth_day'=> 'required|',
+        'old_year'=> 'required|after_or_equal:' . $day ,
+        'old_month'=> 'required|',
+        'old_day'=> 'required|',
         'role'=> 'required|',
         'password'=> 'required|confirmed|min:8|max:30|',
 
