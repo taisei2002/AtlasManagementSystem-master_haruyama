@@ -14,15 +14,7 @@
 </head>
 <body>
 
-@if(count($errors) > 0)
-      <div class="alert alert-danger">
-             <ul>
-                 @foreach($errors->all() as $error)
-                       <li>{{ $error }}</li>
-                 @endforeach
-             </ul>
-       </div>
-@endif
+
 
   <form action="{{ route('registerPost') }}" method="POST">
     <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
@@ -34,6 +26,9 @@
               <div class="border-bottom border-primary" style="width:140px;">
                 <input type="text" style="width:140px;" class="border-0 over_name" name="over_name">
               </div>
+           @if($errors->first('over_name'))
+          <span class="error_message">{{ $errors->first('over_name') }}</span>
+          @endif
             </div>
 
             <div class="" style="width:140px">
@@ -41,6 +36,9 @@
               <div class="border-bottom border-primary" style="width:140px;">
                 <input type="text" style="width:140px;" class="border-0 under_name" name="under_name">
               </div>
+             @if($errors->first('under_name'))
+          <span class="error_message">{{ $errors->first('under_name') }}</span>
+          @endif
             </div>
           </div>
 
@@ -50,6 +48,9 @@
               <div class="border-bottom border-primary" style="width:140px;">
                 <input type="text" style="width:140px;" class="border-0 over_name_kana" name="over_name_kana">
               </div>
+          @if($errors->first('over_name_kana'))
+          <span class="error_message">{{ $errors->first('over_name_kana') }}</span>
+          @endif
             </div>
 
             <div class="" style="width:140px">
@@ -57,6 +58,9 @@
               <div class="border-bottom border-primary" style="width:140px;">
                 <input type="text" style="width:140px;" class="border-0 under_name_kana" name="under_name_kana">
               </div>
+             @if($errors->first('under_name_kana'))
+          <span class="error_message">{{ $errors->first('under_name_kana') }}</span>
+          @endif
             </div>
           </div>
 
@@ -66,6 +70,9 @@
               <input type="mail" class="w-100 border-0 mail_address" name="mail_address">
             </div>
           </div>
+            @if($errors->first('mail_address'))
+          <span class="error_message">{{ $errors->first('mail_address') }}</span>
+          @endif
         </div>
 
         <div class="mt-3">
@@ -106,6 +113,7 @@
             <option value="2008">2008</option>
             <option value="2009">2009</option>
             <option value="2010">2010</option>
+            <option value="2030">2030</option>
           </select>
           <label style="font-size:13px">年</label>
           <select class="old_month" name="old_month">
@@ -159,7 +167,13 @@
             <option value="31">31</option>
           </select>
           <label style="font-size:13px">月</label>
-        </div>
+          <br>
+          @if($errors->first('datetime_validation'))
+          <span class="error_message">{{ $errors->first('datetime_validation') }}</span>
+          @endif
+          </br>
+         </div>
+
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">役職</label>
           <input type="radio" name="role" class="admin_role role" value="1">
@@ -170,6 +184,9 @@
           <label style="font-size:13px">教師(英語)</label>
           <input type="radio" name="role" class="other_role role" value="4">
           <label style="font-size:13px" class="other_role">生徒</label>
+            @if($errors->first('role'))
+          <span class="error_message">{{ $errors->first('role') }}</span>
+          @endif
         </div>
         <div class="select_teacher d-none">
           <label class="d-block m-0" style="font-size:13px">選択科目</label>
@@ -185,6 +202,9 @@
           <div class="border-bottom border-primary">
             <input type="password" class="border-0 w-100 password" name="password">
           </div>
+            @if($errors->first('password'))
+          <span class="error_message">{{ $errors->first('password') }}</span>
+          @endif
         </div>
 
         <div class="mt-3">
@@ -192,6 +212,9 @@
           <div class="border-bottom border-primary">
             <input type="password" class="border-0 w-100 password_confirmation" name="password_confirmation">
           </div>
+            @if($errors->first('password_confirmation'))
+          <span class="error_message">{{ $errors->first('password_confirmation') }}</span>
+          @endif
         </div>
 
         <div class="mt-5 text-right">
