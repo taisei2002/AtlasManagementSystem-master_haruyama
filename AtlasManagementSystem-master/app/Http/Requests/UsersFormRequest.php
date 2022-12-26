@@ -33,7 +33,7 @@ class UsersFormRequest extends FormRequest
         'under_name_kana'=> 'required|string|max:30|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
         'mail_address'=> 'required|string|email|max:100|unique:users',
         'sex'=> 'required|',
-        'old_year'=> 'required|after_or_equal:' . $day ,
+        'old_year'=> 'required|after_or_equal:'.$day,
         'old_month'=> 'required|',
         'old_day'=> 'required|',
         'role'=> 'required|',
@@ -70,6 +70,9 @@ class UsersFormRequest extends FormRequest
         'mail_address.email' => 'メールアドレスの形式ではありません',
         'mail_address.unique' => 'このメールアドレスは既に登録されています',
         'mail_address.max' => 'メールアドレスは100文字以内です',
+
+        'old_year.after_or_equal' => '2000年1月1日以降で入力してください',
+
         //役職
         'role.required' => '役職を選択してください',
         //パスワード
