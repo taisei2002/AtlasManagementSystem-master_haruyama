@@ -26,6 +26,19 @@ class UsersTableSeeder extends Seeder
 
             ],
 
+            [
+          'over_name' => '春山',
+          'under_name' => 'サブ太郎',
+          'over_name_kana' => 'ハルヤマ',
+          'under_name_kana'=> 'タイセイ',
+          'mail_address' => 'taiseisub@Compass.com',
+          'sex' => '1',
+          'birth_day' => '20020209',
+          'role' => '4',
+          'password' => bcrypt('123456789'),
+
+            ],
+
 
           ]);
         }
