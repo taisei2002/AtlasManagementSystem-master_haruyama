@@ -25,7 +25,7 @@ class PostsController extends Controller
             ->where('post_title', 'like', '%'.$request->keyword.'%')
             ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
         }else if($request->category_word){
-            $sub_category = $request->category_word;
+            $w  = $request->category_word;
             $posts = Post::with('user', 'postComments')->get();
         }else if($request->like_posts){
             $likes = Auth::user()->likePostId()->get('like_post_id');
@@ -35,6 +35,8 @@ class PostsController extends Controller
             $posts = Post::with('user', 'postComments')
             ->where('user_id', Auth::id())->get();
         }
+
+
         return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
     }
 
@@ -45,6 +47,10 @@ class PostsController extends Controller
 
     public function postInput(){
         $main_categories = MainCategory::get();
+        $sab_categories = subCategory::get();
+
+
+
         return view('authenticated.bulletinboard.post_create', compact('main_categories'));
     }
 
@@ -70,7 +76,25 @@ class PostsController extends Controller
         return redirect()->route('post.show');
     }
     public function mainCategoryCreate(Request $request){
-        MainCategory::create(['main_category' => $request->main_category_name]);
+        MainCategory::create([
+        'main_category' => $request->main_category_name
+        ]);
+        return redirect()->route('post.input');
+    }
+
+        public function subCategoryCreate(Request $request){
+
+        $main_category_id = MainCategory::get('id');
+
+
+        dd($main_category_id);
+
+        SubCategory::create([
+
+            'sub_category' => $request->sub_category_name,
+    
+        ]);
+
         return redirect()->route('post.input');
     }
 
