@@ -6,7 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\Models\USers\User;
+use App\Models\USers\Subjects;
 use App\Models\Posts\Like;
 use Auth;
 
@@ -71,7 +72,7 @@ class User extends Authenticatable
     }
 
     public function subjects(){
-        return ;// リレーションの定義
+        return $this->hasMany('App\Models\USers\Subjects');// リレーションの定義
     }
 
     // いいねしているかどうか

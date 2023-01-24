@@ -3,6 +3,8 @@
 namespace App\Models\Posts;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Categories\MainCategory;
+use App\Models\Categories\SubCategory;
 
 class Post extends Model
 {
@@ -24,11 +26,11 @@ class Post extends Model
     }
 
     public function subCategories(){
-        // リレーションの定義
+        return $this->hasMany('App\Models\Categories\SubCategory');// リレーションの定義
     }
 
     // コメント数
-    public function commentCounts($post_id){
+    public function commentCount($post_id){
         return Post::with('postComments')->find($post_id)->postComments();
     }
 }
