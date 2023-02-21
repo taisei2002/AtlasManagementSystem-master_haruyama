@@ -45,7 +45,7 @@
       <div class="form-group">
         <p class="m-0">サブカテゴリー</p>
 
-      <select class="form-control" id="sub_category_id" name="sub_category_name" from= 'subCategoryRequest'>
+      <select class="form-control" id="sub_category_id" name="sub_category_name" form= 'subCategoryRequest'>
         <option value="0">---</option>
         @foreach($main_categories as $main_category)
           <option value="{{ $main_category-> id }}">{{ $main_category-> main_category }}</option>
