@@ -83,8 +83,9 @@ class PostsController extends Controller
 
         public function subCategoryCreate(Request $request){
 
-         $main_category_id = $request->  main_category;
-         dd($main_category_id);
+         $main_category_id = $request->  main_category_id;
+
+
         SubCategory::create([
        'sub_category' => $request->sub_category_name,
        'main_category_id' => $request -> main_category_id,
