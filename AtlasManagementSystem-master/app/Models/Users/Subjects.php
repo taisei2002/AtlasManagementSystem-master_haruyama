@@ -17,6 +17,6 @@ class Subjects extends Model
     ];
 
     public function users(){
-        return $this->belongsTo('App\Models\Users\User');
+        return $this->belongsTo('App\Models\Users\User','subject_users','user_id', 'subject_id');
     }
 }
