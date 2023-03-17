@@ -6,13 +6,15 @@
     <div class="">
       <p class="mb-0">カテゴリー</p>
       <select class="w-100" form="postCreate" name="post_category_id">
-        @foreach($main_categories as $main_category)
-        <optgroup label="{{ $main_category->main_category }}"></optgroup>
-        <!-- サブカテゴリー表示 -->
-        <option></option>
-        </optgroup>
-        @endforeach
-      </select>
+    @foreach($main_categories as $main_category )
+    <optgroup label="{{ $main_category->main_category }}"></optgroup>
+  <option value = '  {{ $sab_categories->main_category_id }}' id="post_sub_categories"   form="postCreate" name="post_category_id">{{ $sab_categories->sub_category }}</option>
+  </optgroup>
+    @endforeach
+    /select>
+
+
+
     </div>
     <div class="mt-3">
       @if($errors->first('post_title'))
@@ -34,6 +36,7 @@
     <form action="{{ route('post.create') }}" method="post" id="postCreate">{{ csrf_field() }}</form>
   </div>
   @can('admin')
+
   <div class="w-25 ml-auto mr-auto">
     <div class="category_area mt-5 p-5">
       <div class="">
