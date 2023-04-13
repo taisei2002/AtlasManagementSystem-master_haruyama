@@ -26,7 +26,7 @@ class Post extends Model
     }
 
     public function subCategories(){
-        return $this->hasMany('App\Models\Categories\SubCategory' ,'sub_categories','main_category_id','sub_category');// リレーションの定義
+        return $this->belongsToMany('App\Models\Categories\SubCategory' ,'post_sub_categories','post_id','sub_category_id');// リレーションの定義
     }
 
     // コメント数
