@@ -53,16 +53,15 @@ class PostsController extends Controller
         return view('authenticated.bulletinboard.post_create', compact('main_categories','sab_categories'));
     }
 
-
     public function postCreate(PostFormRequest $request){
         $post = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
             'post' => $request->post_body,
-            'post_id' => $request->post_id,
-            'sub_category' => $request->post_category_id,
-            'post_id' => $request -> post_id,
-        ]);
+     ]);
+        $post = Post::findOrFail($post->id);//post_id　投稿のID
+        $post_sub_category = $request->post_category_id; //sub_category_id サブカテゴリーID
+        $post->subCategories()->attach($post_sub_category);
         return redirect()->route('post.show');
     }
 
