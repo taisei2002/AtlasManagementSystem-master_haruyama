@@ -16,13 +16,14 @@ class CalendarWeek{
     return "week-" . $this->index;
   }
 
+//日にち
   function getDays(){
     $days = [];
-    $startDay = $this->carbon->copy()->startOfWeek();
-    $lastDay = $this->carbon->copy()->endOfWeek();
+    $startDay = $this->carbon->copy()->startOfWeek(); //始まり
+    $lastDay = $this->carbon->copy()->endOfWeek();//終わり
     $tmpDay = $startDay->copy();
 
-    while($tmpDay->lte($lastDay)){
+    while($tmpDay->lte($lastDay)){ //それ以下
       if($tmpDay->month != $this->carbon->month){
         $day = new CalendarWeekBlankDay($tmpDay->copy());
         $days[] = $day;

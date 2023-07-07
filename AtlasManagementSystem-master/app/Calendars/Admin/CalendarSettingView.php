@@ -9,7 +9,7 @@ class CalendarSettingView{
   function __construct($date){
     $this->carbon = new Carbon($date);
   }
-
+// 今の年月
   public function getTitle(){
     return $this->carbon->format('Y年n月');
   }
@@ -39,8 +39,8 @@ class CalendarSettingView{
         $startDay = $this->carbon->format("Y-m-01");
         $toDay = $this->carbon->format("Y-m-d");
 
-       if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-          $html[] = '<td class="past-day border">';
+       if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){// 1日から今日まで
+          $html[] = '<td class="past-day border">';//暗くする
         }else{
           $html[] = '<td class="border '.$day->getClassName().'">';
         }
