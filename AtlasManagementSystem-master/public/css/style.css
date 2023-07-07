@@ -75,7 +75,7 @@ li{
     width: 100%;
 }
 .modal__bg{
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.5);
     height: 100vh;
     position: absolute;
     width: 100%;
@@ -233,3 +233,19 @@ li{
 .subject_inner{
   display:none;
 }
+
+
+
+/*/////////////////////*/
+
+
+
+
+
+
+
+
+
+
+
+

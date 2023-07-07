@@ -44,7 +44,6 @@ class CalendarWeekDay{
     return implode("", $html);
   }
 
-
   function onePartFrame($day){
     $one_part_frame = ReserveSettings::where('setting_reserve', $day)->where('setting_part', '1')->first();
     if($one_part_frame){
