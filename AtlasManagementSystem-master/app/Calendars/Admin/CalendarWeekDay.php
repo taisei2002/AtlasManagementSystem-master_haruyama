@@ -4,6 +4,7 @@ namespace App\Calendars\Admin;
 use Carbon\Carbon;
 use App\Models\Calendars\ReserveSettings;
 
+//スクール予約画面
 class CalendarWeekDay{
   protected $carbon;
 
@@ -28,16 +29,19 @@ class CalendarWeekDay{
     $one_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '1')->first();
     $two_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '2')->first();
     $three_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '3')->first();
-
+// 予約人数 reserve_setting_id　カレンダーid
     $html[] = '<div class="text-left">';
     if($one_part){
       $html[] = '<p class="day_part m-0 pt-1">1部</p>';
+        $html[] =  $three_part->users->count();
     }
     if($two_part){
       $html[] = '<p class="day_part m-0 pt-1">2部</p>';
+        $html[] =  $three_part->users->count();
     }
     if($three_part){
-      $html[] = '<p class="day_part m-0 pt-1">3部</p>';
+      $html[] = '<p class="day_part m-0 pt-1">3部</p>'  ;
+      $html[] =  $three_part->users->count();
     }
     $html[] = '</div>';
 
