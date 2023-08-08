@@ -60,9 +60,9 @@ class CalendarView{
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
 
-      $html[] = '<button type="submit" form="deleteParts" class="btn btn-danger delete-modal-open p-0 w-75" name="delete_date" style="font-size:12px" value="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve .
-       $day->authReserveDate($day->everyDay())->first()->deleteParts .
-      '">' . $reservePart . '</button>';
+      $html[] = '<button class="btn btn-danger delete-modal-open p-0 w-75" style="font-size:12px"
+       setting_reserve = ' .$day->authReserveDate($day->everyDay())->first()->setting_reserve .
+     ' setting_part = ' . $day->authReserveDate($day->everyDay())->first()->setting_part .'>' . $reservePart . '</button>';
 
           //   $html[] = '<button type="submit" form="deleteParts" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve . '">' . $reservePart . '</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
@@ -75,12 +75,14 @@ class CalendarView{
     $html[] = '<div class="modal-inner-title w-50 m-auto">';
     $html[] = '</div>';
     $html[] = '<div class="modal-inner-body w-50 m-auto pt-3 pb-3">';
+    $html[] = '<p class="setting_reserve"></p>';
+    $html[] = '<p class="setting_part"></p>';
     $html[] = '<a>予約をキャンセルしますか？</a>';
     $html[] = '</div>';
     $html[] = '<div class="w-50 m-auto edit-modal-btn d-flex">';
     $html[] = '<a class="js-modal-close btn btn-primary d-inline-block" href="">閉じる</a>';
     $html[] = '<input class="setting_reserve" type="hidden" name="delete_date" form="deleteParts" value="">'; //setting_reserve
-    $html[] = '<input class="setting_part" type="hidden" name="deleteParts" form="deleteParts" value="">'; //setting_part　
+    $html[] = '<input class="setting_part" type="hidden" name="deleteParts" form="deleteParts" value="">'; //setting_part
     $html[] ='<input type="submit" class="btn btn-danger d-block " value="キャンセル" form="deleteParts"">';
     $html[] = '</div>';
     $html[] = '</div>';
