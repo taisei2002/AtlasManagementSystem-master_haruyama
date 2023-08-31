@@ -21,10 +21,11 @@ class CalendarsController extends Controller
         return view('authenticated.calendar.admin.calendar', compact('calendar'));
     }
 
-    //$date と$part でエラーでてるよ☆
-    public function reserveDetail($date, $part ,$user_id = 0,){
-        $reservePersons = ReserveSettings::with('users')->where('setting_reserve', $date)->where('setting_part', $part)->get();
-        return view('authenticated.calendar.admin.reserve_detail', compact('reservePersons', 'date', 'part'));
+    //$date と$part でエラーでてる
+    public function reserveDetail( $id,$date,$part, ){
+        $reservePersons = ReserveSettings::with('users')->where('setting_reserve', $date)->where('setting_part', $part , $id)->get();
+
+        return view('authenticated.calendar.admin.reserve_detail', compact('reservePersons', 'date', 'part','id' ));
     }
 
     public function reserveSettings(){

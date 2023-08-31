@@ -8,8 +8,8 @@
       <table class="">
         <tr class="text-center">
 
-          <th class="w-25">ID</th>
-          <th class="w-25">名前 </th>
+          <th class="w-25">ID{{$id}}</th>
+          <th class="w-25">名前{{}} </th>
         </tr>
         <tr class="text-center">
           <td class="w-25"></td>
