@@ -10,8 +10,9 @@
         <tr class="text-center">
           <th class="w-25">ID</th>
           <th class="w-25">名前</th>
-              <th class="w-25">場所</th> <!-- 場所の追加 -->
+              <th class="w-25">場所</th>
         </tr>
+        <!-- ID -->
         @foreach ($reservePersons as $reservePerson)
         <tr class="text-center">
           <td class="w-25">
@@ -21,6 +22,7 @@
               @endforeach
             @endif
           </td>
+        <!-- 名前 -->
           <td class="w-25">
             @if ($reservePerson->users)
               @foreach ($reservePerson->users as $user)
@@ -28,10 +30,11 @@
               @endforeach
             @endif
           </td>
+          <!--場所-->
            <td class="w-25">
             @if ($reservePerson->users)
               @foreach ($reservePerson->users as $user)
-                リモート<br> <!-- 各ユーザーごとに「リモート」を表示 -->
+                リモート<br>
               @endforeach
             @endif
         </tr>
