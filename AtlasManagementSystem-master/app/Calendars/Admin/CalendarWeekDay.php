@@ -32,9 +32,9 @@ class CalendarWeekDay{
 // 予約人数 reserve_setting_id　カレンダーid
     $html[] = '<div class="text-left">';
     if($one_part){
-        
+
     $html[] = '<a href="' . route('calendar.admin.detail', ['id' => $one_part->id, 'data' => $ymd, 'part' =>$one_part->setting_part]) . '">';
-    $html[] = '<p class="day_part m-0 pt-1">2部</p>';
+    $html[] = '<p class="day_part m-0 pt-1">1部</p>';
     $html[] =  $one_part->users->count();
     $html[] = '</a>';
 
