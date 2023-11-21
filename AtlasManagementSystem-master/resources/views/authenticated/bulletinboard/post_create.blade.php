@@ -1,6 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('content')
+<!-- 投稿画面　-->
 <div class="post_create_container d-flex">
   <div class="post_create_area border w-50 m-5 p-5">
     <div class="">

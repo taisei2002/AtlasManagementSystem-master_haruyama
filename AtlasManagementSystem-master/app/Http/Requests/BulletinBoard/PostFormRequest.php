@@ -36,8 +36,8 @@ class PostFormRequest extends FormRequest
             'post_title.max' => 'タイトルは50文字以内で入力してください。',
             'post_body.min' => '内容は10文字以上入力してください。',
             'post_body.max' => '最大文字数は500文字です。',
-            'post_category_id.required' => 'サブカテゴリーを選択してください。,',
-            'post_category_id.exists' => 'サブカテゴリーを選択してください。,',
+            'post_category_id.required' => 'サブカテゴリーを選択してください。',
+            'post_category_id.exists' => 'サブカテゴリーを選択してください。',
         ];
     }
 

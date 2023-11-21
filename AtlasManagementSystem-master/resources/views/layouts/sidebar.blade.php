@@ -19,21 +19,23 @@
   <div class="d-flex">
     <div class="sidebar">
       @section('sidebar')
-      <p><a href="{{ route('top.show') }}">トップ</a></p>
-      <p><a href="/logout">ログアウト</a></p>
-      <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
+      <div class = "sidebar-name">
+      <p> <a href="{{ route('top.show') }}"> <img class = "home"src="{{ asset('images/home.png') }}"> マイページ</a></p>
+      <p><a href="/logout"><img class = "home"src="{{ asset('images/logout.png') }}"> ログアウト</a></p>
+      <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}"><img class = "home"src="{{ asset('images/Reservation registration.png') }}"> スクール予約</a></p>
        @can('admin-higher')
-      <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
-      <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+      <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}"><img class = "home"src="{{ asset('images/Calendar.png') }}"> スクール予約確認</a></p>
+      <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}"><img class = "home"src="{{ asset('images/Calendar reservation.png') }}"> スクール枠登録</a></p>
           @endcan
-      <p><a href="{{ route('post.show') }}">掲示板</a></p>
-      <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+      <p><a href="{{ route('post.show') }}"><img class = "home"src="{{ asset('images/bulletin board.png') }}"> 掲示板</a></p>
+      <p><a href="{{ route('user.show') }}"><img class = "home"src="{{ asset('images/users.png') }}"> ユーザー検索</a></p>
       @show
     </div>
+</div>
     <div class="main-container">
       @yield('content')
     </div>
-  </div>
+  </.div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="{{ asset('js/register.js') }}" rel="stylesheet"></script>
   <script src="{{ asset('js/bulletin.js') }}" rel="stylesheet"></script>

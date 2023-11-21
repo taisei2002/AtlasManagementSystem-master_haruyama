@@ -6,39 +6,28 @@
   <div class="w-50 m-auto h-75">
     <p><span>{{$date}}日</span><span class="ml-3">{{$part}}部</span></p>
     <div class="h-75 border">
-      <table class="">
-        <tr class="text-center">
+      <table class="custom-w-25"> <!-- クラスを追加 -->
+        <tr class="text-center bg-blue">
           <th class="w-25">ID</th>
           <th class="w-25">名前</th>
-              <th class="w-25">場所</th>
+          <th class="w-25">場所</th>
         </tr>
-        <!-- ID -->
-        @foreach ($reservePersons as $reservePerson)
-        <tr class="text-center">
-          <td class="w-25">
-            @if ($reservePerson->users)
-              @foreach ($reservePerson->users as $user)
-                {{$user->id}}<br>
-              @endforeach
-            @endif
-          </td>
-        <!-- 名前 -->
-          <td class="w-25">
-            @if ($reservePerson->users)
-              @foreach ($reservePerson->users as $user)
-                {{$user->over_name}} {{$user->under_name}}<br>
-              @endforeach
-            @endif
-          </td>
-          <!--場所-->
-           <td class="w-25">
-            @if ($reservePerson->users)
-              @foreach ($reservePerson->users as $user)
-                リモート<br>
-              @endforeach
-            @endif
-        </tr>
-        @endforeach
+        @forelse ($reservePersons as $reservePerson)
+          @php $users = $reservePerson->users @endphp
+          @if ($users)
+            @foreach ($users as $user)
+              <tr class="text-center {{ $loop->odd ? 'bg-white' : 'bg-lightblue'}}">
+                <td class="w-25">{{ $user->id }}</td>
+                <td class="w-25">{{ $user->over_name }} {{ $user->under_name }}</td>
+                <td class="w-25">リモート</td>
+              </tr>
+            @endforeach
+          @endif
+        @empty
+          <tr>
+            <td class="w-25" colspan="3">No data available</td>
+          </tr>
+        @endforelse
       </table>
     </div>
   </div>

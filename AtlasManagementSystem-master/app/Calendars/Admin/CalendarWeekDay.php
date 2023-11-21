@@ -24,46 +24,79 @@ class CalendarWeekDay{
     return $this->carbon->format("Y-m-d");
   }
 
+  function partCounts(){
+    $ymd = $this->carbon->format("Y-m-d");
+    $html = [];
+
+    // 各部の予約数をデータベースまたはモデルから取得
+    $onePartCount = ReserveSettings::with('users')
+        ->where('setting_reserve', $ymd)
+        ->where('setting_part', '1')
+        ->first()
+        ->users->count();
+
+    $twoPartCount = ReserveSettings::with('users')
+        ->where('setting_reserve', $ymd)
+        ->where('setting_part', '2')
+        ->first()
+        ->users->count();
+
+    $threePartCount = ReserveSettings::with('users')
+        ->where('setting_reserve', $ymd)
+        ->where('setting_part', '3')
+        ->first()
+        ->users->count();
+
+    $html[] = '<div class="text-left">';
+    $html[] = '<p class="day_part m-0 pt-1">1部</p>';
+    $html[] = $onePartCount;
+    $html[] = '</a>';
+
+    $html[] = '<p class="day_part m-0 pt-1">2部</p>';
+    $html[] = $twoPartCount;
+    $html[] = '</a>';
+
+    $html[] = '<p class "day_part m-0 pt-1">3部</p>';
+    $html[] = $threePartCount;
+
+    $html[] = '</a>';
+    $html[] = '</div>';
+
+    return implode("", $html);
+}
+
   function dayPartCounts($ymd){
+
     $html = [];
     $one_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '1')->first();
     $two_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '2')->first();
     $three_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '3')->first();
+
 // 予約人数 reserve_setting_id　カレンダーid
-    $html[] = '<div class="text-left">';
-    if($one_part){
-
-    $html[] = '<a href="' . route('calendar.admin.detail', ['id' => $one_part->id, 'data' => $ymd, 'part' =>$one_part->setting_part]) . '">';
-    $html[] = '<p class="day_part m-0 pt-1">1部</p>';
-    $html[] =  $one_part->users->count();
+$html[] = '<div class="text-left">';
+if ($one_part) {
+    $html[] = '<a href="' . route('calendar.admin.detail', ['id' => $one_part->id, 'data' => $ymd, 'part' => $one_part->setting_part]) . '">';
+    $html[] = '<p class="day_part m-0 pt-1">1部　　 ' . $one_part->users->count() . '</p>';
     $html[] = '</a>';
-
-    }
-    if($two_part){
-
-   // $routeName = 'calendar.admin.detail';
-   // $id = $two_part->id; // Get the id from $three_part
-   // $data = $two_part->setting_reserve; // Get the data from $three_part
-   // $part = '2';
-   // $html[] = '<a href="' . route($routeName, ['id' => $id, 'data' => $data, 'part' => $part]) . '">';
-    $html[] = '<a href="' . route('calendar.admin.detail', ['id' => $two_part->id, 'data' => $ymd, 'part' =>$two_part->setting_part]) . '">';
-    $html[] = '<p class="day_part m-0 pt-1">2部</p>';
-    $html[] =  $two_part->users->count();
+}
+if ($two_part) {
+    $html[] = '<a class="" href="' . route('calendar.admin.detail', ['id' => $two_part->id, 'data' => $ymd, 'part' => $two_part->setting_part]) . '">';
+    $html[] = '<p class="day_part m-0 pt-1">2部　　 ' . $two_part->users->count() . '</p>';
     $html[] = '</a>';
+}
+if ($three_part) {
+    $html[] = '<a href="' . route('calendar.admin.detail', ['id' => $three_part->id, 'data' => $ymd, 'part' => $three_part->setting_part]) . '">';
+    $html[] = '<p class="day_part m-0 pt-1">3部　　 ' . $three_part->users->count() . '</p>';
+    $html[] = '</a>';
+}
+$html[] = '</div>';
 
-    }
-    if($three_part){
-
-      $html[] = '<a href="' . route('calendar.admin.detail', ['id' => $three_part->id, 'data' => $ymd, 'part' => $three_part->setting_part]) . '">';
-      $html[] = '<p class="day_part m-0 pt-1">3部</p>';
-      $html[] =  $three_part->users->count();
-
-    }
        $html[] = '</a>';
        $html[] = '</div>';
 
     return implode("", $html);
   }
+
 
   function onePartFrame($day){
     $one_part_frame = ReserveSettings::where('setting_reserve', $day)->where('setting_part', '1')->first();
